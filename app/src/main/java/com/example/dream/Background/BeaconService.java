@@ -1,4 +1,4 @@
-package com.example.dream.Beacon;
+package com.example.dream.Background;
 
 import android.app.Service;
 import android.content.Intent;
@@ -25,6 +25,10 @@ public class BeaconService extends Service {
     public static String MY_ACTION = "MY_ACTION";
     private String Previous_Beacon = "previous";
     private String Latest_Beacon = "last";
+    private int Rssi, target, TxPower;
+    private int inrange;
+    private double distance1;
+    protected Integer proximity;
 
     public BeaconService(){}
 
@@ -85,11 +89,16 @@ public class BeaconService extends Service {
                             {
                                 MinewBeacon item = list.get(i);
                                 b_name = item.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Name).getStringValue();
+
                                 for (int j = 0; j < 10 ; j ++)
                                 {
                                     if (b_name.equals(beacon_name[j])) {
                                         myLocation = location_name[j];
                                         Latest_Beacon = myLocation;
+                                        TxPower = item.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_TxPower).getIntValue();
+                                        Rssi = item.getBeaconValue(BeaconValueIndex. MinewBeaconValueIndex_RSSI).getIntValue();
+                                        inrange = item.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_InRage).getIntValue();
+                                        //calculateDistance(TxPower,Rssi);
                                         if(!Previous_Beacon.equals(Latest_Beacon)){
                                             Toast_Show = "no";
                                         }
@@ -98,6 +107,8 @@ public class BeaconService extends Service {
                                             Intent intent = new Intent();
                                             intent.setAction(MY_ACTION);
                                             intent.putExtra("ServiceData",myLocation);
+                                            //intent.putExtra("ServiceData2",calculateDistance(TxPower,Rssi));
+                                            intent.putExtra("ServiceData2",inrange);
                                             sendBroadcast(intent);
                                             Toast_Show="yes";
                                         }
@@ -113,6 +124,23 @@ public class BeaconService extends Service {
             }
         });
     }
+
+
+    protected static double calculateDistance(int txPower, double rssi){
+        if (rssi == 0){
+            return -1.0;
+        }
+        double ratio = rssi * 1.0 / txPower;
+
+        if (ratio < 1.0) {
+            return Math.pow(ratio,10);
+        }
+        else {
+            double accuracy =  (0.89976)*Math.pow(ratio,7.7095) + 0.111;
+            return accuracy;
+        }
+    }
+
 
     public void initObject(){
 

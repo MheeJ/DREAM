@@ -56,13 +56,26 @@ android:touchscreenBlocksFocus="true">
             android:textSize="30dp" />
     </FrameLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="상태"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"/>
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="245dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="상태" />
+
+    <Button
+        android:id="@+id/newBtn_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="새로고침" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,7 +116,7 @@ android:touchscreenBlocksFocus="true">
         >
 
         <TextView
-            android:layout_width="277dp"
+            android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="   데이터 이용"
@@ -113,10 +126,11 @@ android:touchscreenBlocksFocus="true">
         <TextView
             android:layout_width="302dp"
             android:layout_height="wrap_content"
-            android:text="불가능"
             android:layout_gravity="center_vertical"
+            android:id="@+id/data_status"
+            android:text=""
             android:textColor="#FF0000"
-            android:textSize="30dp" />
+            android:textSize="30dp"/>
 
     </LinearLayout>
 
@@ -145,7 +159,8 @@ android:touchscreenBlocksFocus="true">
             android:layout_width="302dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="  불가능"
+            android:id="@+id/wifi_status"
+            android:text=""
             android:textColor="#FF0000"
             android:textSize="30dp" />
 

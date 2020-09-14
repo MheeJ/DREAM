@@ -17,20 +17,21 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.dream.R;
-import com.example.dream.Beacon.BeaconService;
+import com.example.dream.Background.BeaconService;
 //import static com.facebook.accountkit.internal.AccountKitController.getApplicationContext;
 
 public class Fragment2 extends Fragment implements View.OnClickListener{
 
     ToggleButton Toggle;
-    private Button NewBtn;
+    private Button NewBtn_Drone;
     private TextView Beacon_Text;
     private final int PERMISSION_REQUEST_COARSE_LOCATION = 100;
     MyReceiver myReceiver;
     private String Beacon_Condition,DataFromService;
+    private double AA;
+    private double DistanceA;
     private Context context;
 
 
@@ -39,8 +40,8 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.activity_fragment2, container, false);
 
         Beacon_Text = (TextView)view.findViewById(R.id.beacon_text);
-        NewBtn = (Button)view.findViewById(R.id.newBtn);
-        NewBtn.setOnClickListener(this);
+        NewBtn_Drone = (Button)view.findViewById(R.id.newBtn_drone);
+        NewBtn_Drone.setOnClickListener(this);
         context = container.getContext();
 
         return view;
@@ -52,7 +53,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.newBtn:
+            case R.id.newBtn_drone:
                 Start_BeaconService();
                 setToast("주변에 위치한 드론을 확인합니다.");
                 break;
@@ -93,6 +94,8 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         public void onReceive(Context arg0, Intent arg1) {
             // TODO Auto-generated method stub
             DataFromService = arg1.getStringExtra("ServiceData");
+            AA = arg1.getDoubleExtra("ServiceData2",0);
+            DistanceA = Math.round(AA*100)/100.0;
             //UI에 표시하는 부분 여기에 입력하면 됨 _ 현재 접속된 비콘 이름 출력
             set_UI();
         }
@@ -100,7 +103,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
 
     //서비스에서 가져온 데이터 UI에 표시
     public void set_UI(){
-        setToast(DataFromService+" 기기 등록이 완료되었습니다.");
+        setToast(DataFromService+"는   "+DistanceA+"m" +"   기기 등록이 완료되었습니다.");
         setTextView(DataFromService);
     }
 

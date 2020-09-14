@@ -45,14 +45,15 @@
             <TextView
                 android:layout_width="104dp"
                 android:layout_height="wrap_content"
-                android:text="   드론1"
+                android:layout_marginLeft="20dp"
+                android:text="드론1"
+                android:id="@+id/beacon_text"
                 android:layout_gravity="center_vertical"
                 android:textColor="#000000"
                 android:textSize="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:id="@+id/beacon_text"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="기기 등록이 완료되었습니다."
@@ -143,7 +144,7 @@
             android:layout_marginLeft="15dp"/>
 
         <Button
-            android:id="@+id/newBtn"
+            android:id="@+id/newBtn_drone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="새로운 기기 등록"
