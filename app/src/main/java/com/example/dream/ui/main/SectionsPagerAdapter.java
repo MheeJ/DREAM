@@ -14,10 +14,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 //
-    public com.example.dream.ui.main.Fragment1 mFragment1 = null;
-    public com.example.dream.ui.main.Fragment2 mFragment2 = null;
-    public com.example.dream.ui.main.Fragment3 mFragment3 = null;
-    public com.example.dream.ui.main.Fragment4 mFragment4 = null;
+    public Fragment1 mFragment1 = null;
+    public Fragment2 mFragment2 = null;
+    public Fragment3 mFragment3 = null;
+    public Fragment4 mFragment4 = null;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -30,13 +30,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch(position) {
             case 0:
-                return mFragment1 = new com.example.dream.ui.main.Fragment1();
+                return mFragment1 = new Fragment1();
             case 1:
-                return mFragment2 = new com.example.dream.ui.main.Fragment2();
+                return mFragment2 = new Fragment2();
             case 2:
-                return mFragment3 = new com.example.dream.ui.main.Fragment3();
+                return mFragment3 = new Fragment3();
             case 3:
-                return mFragment4 = new com.example.dream.ui.main.Fragment4();
+                return mFragment4 = new Fragment4();
             default:
                 return null;
         }

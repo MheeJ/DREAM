@@ -31,6 +31,10 @@
         <activity android:name=".ui.main.Fragment3"/>
         <activity android:name=".ui.main.Fragment4"/>
         <service android:name=".Background.BeaconService"/>
+        <service
+            android:name=".Background.GPSBackgroundService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -27,128 +27,38 @@
                 android:textSize="14dp" />
         </LinearLayout>
 
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-
-            />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="104dp"
+            <Button
+                android:id="@+id/adddrone_btn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="드론1"
-                android:id="@+id/beacon_text"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-                android:textSize="30dp" />
+                android:layout_weight="1"
+                android:text="새로운 기기 등록"
+                android:background="#C3D1C8"/>
 
-            <TextView
-                android:layout_width="match_parent"
+
+            <Button
+                android:id="@+id/deldrone_btn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="기기 등록이 완료되었습니다."
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"/>
+                android:layout_weight="1"
+                android:text="등록된 기기 삭제"
+                android:background="#C3D1B8"/>
 
         </LinearLayout>
 
-        <TextView
+        <ListView
+            android:id="@+id/droneList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text=""
-            android:textSize="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="   드론2"
-                android:textColor="#000000"
-                android:textSize="30dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="기기 등록이 완료되었습니다."
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"/>
+            android:layout_weight="1"
+            android:choiceMode="singleChoice" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:text="   드론3"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-                android:textSize="30dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="기기 등록이 완료되었습니다."
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text=""
-            android:textSize="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"/>
-
-        <Button
-            android:id="@+id/newBtn_drone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="새로운 기기 등록"
-            android:background="#C3D1C8"/>
 
 
     </LinearLayout>

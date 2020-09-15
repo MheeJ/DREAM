@@ -98,6 +98,7 @@ public class BeaconService extends Service {
                                         TxPower = item.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_TxPower).getIntValue();
                                         Rssi = item.getBeaconValue(BeaconValueIndex. MinewBeaconValueIndex_RSSI).getIntValue();
                                         inrange = item.getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_InRage).getIntValue();
+                                        distance1 = Math.pow(10,(TxPower-Rssi)/20);
                                         //calculateDistance(TxPower,Rssi);
                                         if(!Previous_Beacon.equals(Latest_Beacon)){
                                             Toast_Show = "no";
@@ -108,7 +109,7 @@ public class BeaconService extends Service {
                                             intent.setAction(MY_ACTION);
                                             intent.putExtra("ServiceData",myLocation);
                                             //intent.putExtra("ServiceData2",calculateDistance(TxPower,Rssi));
-                                            intent.putExtra("ServiceData2",inrange);
+                                            intent.putExtra("ServiceData2",distance1);
                                             sendBroadcast(intent);
                                             Toast_Show="yes";
                                         }
@@ -126,7 +127,7 @@ public class BeaconService extends Service {
     }
 
 
-    protected static double calculateDistance(int txPower, double rssi){
+    protected static double calculateDistance(int txPower, int rssi){
         if (rssi == 0){
             return -1.0;
         }

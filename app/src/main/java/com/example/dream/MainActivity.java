@@ -1,8 +1,10 @@
 package com.example.dream;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.dream.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
@@ -10,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    com.example.dream.ui.main.SectionsPagerAdapter sectionsPagerAdapter = null;
-
+   SectionsPagerAdapter sectionsPagerAdapter = null;
+   private static final String TAG = "MainActivity";
    private int[] tabIcons={
             R.drawable.ic_web_black_24dp,
             R.drawable.ic_chat_bubble_outline_black_24dp,
@@ -33,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         {
             tabs.getTabAt(i).setIcon(tabIcons[i]);
         }
-    }
 
+
+    }
+    public void hideLayout(){
+        Log.d(TAG, "hideLayout: hiding layout");
+//        mRelativeLayout.setVisibility(View.GONE);
+//        mFrameLayout.setVisibility(View.VISIBLE);
+    }
 }

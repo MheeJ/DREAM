@@ -43,7 +43,8 @@ android:touchscreenBlocksFocus="true">
             android:layout_width="426dp"
             android:layout_height="225dp"
             android:scaleType="fitXY"
-            android:src="@drawable/gy" />
+            android:src="@drawable/gy"
+            android:id="@+id/my_address"/>
 
         <TextView
             android:id="@+id/n_address"
@@ -51,9 +52,9 @@ android:touchscreenBlocksFocus="true">
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="경상북도 경주시 신평동"
+            android:text="화면 또는 새로고침을 눌러주세요"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="28dp" />
     </FrameLayout>
 
     <LinearLayout
@@ -77,29 +78,7 @@ android:touchscreenBlocksFocus="true">
         android:text="새로고침" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-       >
 
-        <TextView
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="   통화 이용 "
-            android:textColor="#000000"
-            android:textSize="30dp" />
-
-        <TextView
-            android:layout_width="302dp"
-            android:layout_height="wrap_content"
-            android:text="불가능"
-            android:layout_gravity="center_vertical"
-            android:textColor="#FF0000"
-            android:textSize="30dp" />
-
-    </LinearLayout>
 
     <TextView
         android:layout_width="301dp"
@@ -121,7 +100,7 @@ android:touchscreenBlocksFocus="true">
             android:layout_gravity="center_vertical"
             android:text="   데이터 이용"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:layout_width="302dp"
@@ -130,7 +109,7 @@ android:touchscreenBlocksFocus="true">
             android:id="@+id/data_status"
             android:text=""
             android:textColor="#FF0000"
-            android:textSize="30dp"/>
+            android:textSize="25dp"/>
 
     </LinearLayout>
 
@@ -153,7 +132,7 @@ android:touchscreenBlocksFocus="true">
             android:layout_gravity="center_vertical"
             android:text="   와이파이 이용"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:layout_width="302dp"
@@ -162,7 +141,7 @@ android:touchscreenBlocksFocus="true">
             android:id="@+id/wifi_status"
             android:text=""
             android:textColor="#FF0000"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
     </LinearLayout>
 
