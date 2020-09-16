@@ -28,26 +28,40 @@ android:touchscreenBlocksFocus="true">
             android:textSize="14dp" />
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:indeterminateTint="#FFDB7093"
+        android:visibility="gone"
+        android:layout_marginTop="-7dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="282dp"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-
             android:text="상태" />
 
-        <Button
-            android:id="@+id/newBtn_state"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="새로고침" />
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/restart_btn"
+            android:id="@+id/restart_btn"/>
+
+
     </LinearLayout>
 
 
@@ -59,8 +73,8 @@ android:touchscreenBlocksFocus="true">
         >
 
         <TextView
-            android:layout_width="263dp"
-            android:layout_height="wrap_content"
+            android:layout_width="294dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:text="   데이터 이용"
             android:textColor="#000000"
@@ -69,7 +83,7 @@ android:touchscreenBlocksFocus="true">
         <TextView
             android:layout_width="302dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="right"
             android:id="@+id/data_status"
             android:text=""
             android:textColor="#FF0000"
@@ -85,8 +99,8 @@ android:touchscreenBlocksFocus="true">
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
+            android:layout_width="296dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:text="   와이파이 이용"
             android:textColor="#000000"
@@ -95,7 +109,7 @@ android:touchscreenBlocksFocus="true">
         <TextView
             android:layout_width="302dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="right"
             android:id="@+id/wifi_status"
             android:text=""
             android:textColor="#FF0000"

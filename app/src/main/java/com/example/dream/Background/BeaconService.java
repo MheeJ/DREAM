@@ -156,16 +156,16 @@ public class BeaconService extends Service {
         beacon_name[8] = "NamsanTower29245";
         beacon_name[9] = "Jeju29259";
 
-        location_name[0] = "서울";
-        location_name[1] = "강원도";
-        location_name[2] = "충청북도";
-        location_name[3] = "드론3";
-        location_name[4] = "드론1";
-        location_name[5] = "전라남도";
-        location_name[6] = "경상남도";
-        location_name[7] = "경상북도";
-        location_name[8] = "남산타워";
-        location_name[9] = "제주도";
+        location_name[0] = "드론1";
+        location_name[1] = "드론2";
+        location_name[2] = "드론3";
+        location_name[3] = "드론4";
+        location_name[4] = "드론5";
+        location_name[5] = "드론6";
+        location_name[6] = "드론7";
+        location_name[7] = "드론8";
+        location_name[8] = "드론9";
+        location_name[9] = "드론10";
     }
 
     private void initManager() {

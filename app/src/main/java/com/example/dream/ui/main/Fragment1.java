@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +67,8 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
     private static int mMarkerID;
     public TMapView tmapview;
     private String location;
+    private ProgressBar progressBar;
+    private ImageView Restart_Btn;
 
 
 
@@ -76,11 +79,12 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
 
         Data_Status = (TextView)view.findViewById(R.id.data_status);
         Wifi_Status = (TextView)view.findViewById(R.id.wifi_status);
-        NewBtn_State = (Button)view.findViewById(R.id.newBtn_state);
-        NewBtn_State.setOnClickListener(this);
         MyAddress = (ImageView)view.findViewById(R.id.my_address);
         MyAddress.setOnClickListener(this);
         Address = (TextView) view.findViewById(R.id.address);
+        progressBar = (ProgressBar)view.findViewById(R.id.progressbar);
+        Restart_Btn = (ImageView)view.findViewById(R.id.restart_btn);
+        Restart_Btn.setOnClickListener(this);
 
      /*   prepareBackgroundService();
         getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));*/
@@ -110,16 +114,14 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId())
         {
-            case R.id.newBtn_state:
+            case R.id.restart_btn:
+                progressBar.setVisibility(View.VISIBLE);
                 prepareBackgroundService();
                 getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));
 
                 int status = Status.getConnectivityStatus(getContext());
                 if(status == Status.TYPE_MOBILE){
                     setTextView1("연결됨");
-                    getPosition();
-                    tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
-                    tmapview.setLocationPoint(longitude, latitude);
                     if(status == Status.TYPE_WIFI){
                         setTextView2("연결됨");
                     }
@@ -129,9 +131,7 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
                 }
                 else if(status == Status.TYPE_WIFI){
                     setTextView2("연결됨");
-                    getPosition();
-                    tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
-                    tmapview.setLocationPoint(longitude, latitude);
+
                     if(status == Status.TYPE_MOBILE){
                         setTextView1("연결됨");
                     }
@@ -143,19 +143,22 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
                     setTextView1("이용불가");
                     setTextView2("이용불가");
                 }
+                getActivity().stopService(new Intent(getActivity(),GPSBackgroundService.class));
                 break;
 
             case R.id.my_address:
+                prepareBackgroundService();
+                getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));
                /* prepareBackgroundService();
                 Toast.makeText(getContext(),"위치 찾는 중",Toast.LENGTH_LONG).show();
                 getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));*/
-                getPosition();
+              /*  getPosition();
                 tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
-                tmapview.setLocationPoint(longitude, latitude);
+                tmapview.setLocationPoint(longitude, latitude);*/
                 //아래 네개 문장은 꼭 필요
 
                 // 일단은 바로 멈추게 함
-                getActivity().stopService(new Intent(getActivity(),GPSBackgroundService.class));
+                //getActivity().stopService(new Intent(getActivity(),GPSBackgroundService.class));
                 break;
             default:
                 break;
@@ -181,6 +184,10 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
             longitude = arg1.getDoubleExtra("double_longitude",0);
             latitude = arg1.getDoubleExtra("double_latitude",0);
             getMyLocation();
+            getPosition();
+            tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
+            tmapview.setLocationPoint(longitude, latitude);
+            progressBar.setVisibility(View.GONE);
         }
     }
 

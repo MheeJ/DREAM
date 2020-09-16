@@ -25,6 +25,7 @@
                 android:text=" 기기등록"
                 android:textColor="#FFFFFF"
                 android:textSize="14dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -39,7 +40,6 @@
                 android:layout_weight="1"
                 android:text="새로운 기기 등록"
                 android:background="#C3D1C8"/>
-
 
             <Button
                 android:id="@+id/deldrone_btn"

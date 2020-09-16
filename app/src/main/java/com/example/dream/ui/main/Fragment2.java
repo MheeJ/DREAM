@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -45,13 +47,11 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     private double DistanceA;
     private Context context;
     ImageView Drone_Picture;
-
+    private ProgressBar mProgressBar;
     Button AddDrone_Btn, DeleteDrone_Btn;
     ListView Drone_list;
     ArrayList<String> items;
     ArrayAdapter adapter;
-
-
 
 
     @Override
@@ -68,7 +68,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         DeleteDrone_Btn = (Button)view.findViewById(R.id.deldrone_btn);
         DeleteDrone_Btn.setOnClickListener(this);
         Drone_Picture = (ImageView)view.findViewById(R.id.drone_picture);
-
         context = container.getContext();
 
 
@@ -95,15 +94,15 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
                 case 4:
                     Drone_Picture.setImageResource(R.drawable.dron_pic4);
                     break;
+                case 5:
+                    Drone_Picture.setImageResource(R.drawable.dron_pic5);
+                    break;
             }
 
             //Toast.makeText(context,num,Toast.LENGTH_LONG).show();
 
         }
     };
-
-
-
 
     @Override
     public void onClick(View view) {
@@ -130,9 +129,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
                 break;
         }
     }
-
-    //텍스트뷰
-    //public void setTextView(String text){Beacon_Text.setText(text);}
 
     //토스트
     public void  setToast(String msg){

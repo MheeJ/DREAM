@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
    SectionsPagerAdapter sectionsPagerAdapter = null;
    private static final String TAG = "MainActivity";
    private int[] tabIcons={
-            R.drawable.ic_web_black_24dp,
-            R.drawable.ic_chat_bubble_outline_black_24dp,
+            R.drawable.map_btn,
+            R.drawable.dron_btn,
             R.drawable.emer,
-            R.drawable.ic_account_box_black_24dp
+            R.drawable.user_btn
     };
 
     @Override
