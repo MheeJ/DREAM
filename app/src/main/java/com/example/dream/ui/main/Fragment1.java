@@ -82,9 +82,8 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
         MyAddress.setOnClickListener(this);
         Address = (TextView) view.findViewById(R.id.address);
 
-        prepareBackgroundService();
-        //Toast.makeText(getContext(),"위치 찾는 중",Toast.LENGTH_LONG).show();
-        getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));
+     /*   prepareBackgroundService();
+        getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));*/
 
         mArrayMarkerID = new ArrayList<>();
         mMarkerID = 0;
@@ -100,11 +99,7 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
         tmapview.setSightVisible(true);
         linearLayout.addView(tmapview);
 
-        //getCurrentPosition();
 
-
-
-       // makegeocoder();
 
         return view;
 

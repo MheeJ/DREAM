@@ -160,7 +160,7 @@ public class BeaconService extends Service {
         location_name[1] = "강원도";
         location_name[2] = "충청북도";
         location_name[3] = "드론3";
-        location_name[4] = "드론4";
+        location_name[4] = "드론1";
         location_name[5] = "전라남도";
         location_name[6] = "경상남도";
         location_name[7] = "경상북도";

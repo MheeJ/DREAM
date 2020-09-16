@@ -53,6 +53,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment2, container, false);
@@ -77,16 +78,31 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            int list_count, list_check;
-            list_count = adapter.getCount();
-            if(list_count>0){
-                list_check = Drone_list.getCheckedItemPosition();
-                if(list_check > -1 && list_check < list_count){
+            Object vo = (Object)parent.getAdapter().getItem(position);
+            String vi = String.valueOf(vo);
+            String inStr = vi.replaceAll("[^\\d]","");
+            int num = Integer.parseInt(inStr);
+            switch (num){
+                case 1:
+                    Drone_Picture.setImageResource(R.drawable.dron_pic1);
+                    break;
+                case 2:
+                    Drone_Picture.setImageResource(R.drawable.dron_pic2);
+                    break;
+                case 3:
+                    Drone_Picture.setImageResource(R.drawable.dron_pic3);
+                    break;
+                case 4:
                     Drone_Picture.setImageResource(R.drawable.dron_pic4);
-                }
+                    break;
             }
+
+            //Toast.makeText(context,num,Toast.LENGTH_LONG).show();
+
         }
     };
+
+
 
 
     @Override
@@ -159,7 +175,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     //서비스에서 가져온 데이터 UI에 표시
     public void set_UI(){
         setToast(DataFromService+"는   "+ DistanceA +"m" +"   기기 등록이 완료되었습니다.");
-        items.add(DataFromService+"    "+DistanceA+"m");
+        items.add(DataFromService);
         adapter.notifyDataSetChanged();
         //setTextView(DataFromService);
     }
