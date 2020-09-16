@@ -1,4 +1,4 @@
-<LinearLayout
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -51,12 +51,32 @@
 
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/droneList"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+            <ListView
+                android:id="@+id/droneList"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="9"
+                android:choiceMode="singleChoice">
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:choiceMode="singleChoice" />
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <ImageView
+                android:id="@+id/drone_picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/dron_pic1" />
+        </LinearLayout>
 
 
 

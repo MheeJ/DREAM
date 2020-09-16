@@ -27,6 +27,82 @@ android:touchscreenBlocksFocus="true">
             android:textColor="#FFFFFF"
             android:textSize="14dp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="282dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+
+            android:text="상태" />
+
+        <Button
+            android:id="@+id/newBtn_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="새로고침" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="   데이터 이용"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="302dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/data_status"
+            android:text=""
+            android:textColor="#FF0000"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="   와이파이 이용"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="302dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/wifi_status"
+            android:text=""
+            android:textColor="#FF0000"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +123,7 @@ android:touchscreenBlocksFocus="true">
             android:id="@+id/my_address"/>
 
         <TextView
-            android:id="@+id/n_address"
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -58,90 +134,10 @@ android:touchscreenBlocksFocus="true">
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="245dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="상태" />
-
-    <Button
-        android:id="@+id/newBtn_state"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="새로고침" />
-    </LinearLayout>
-
-
-
-    <TextView
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_gravity="center_vertical"
-        android:textColor="#000000"
-        android:textSize="10dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="263dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="   데이터 이용"
-            android:textColor="#000000"
-            android:textSize="25dp" />
-
-        <TextView
-            android:layout_width="302dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/data_status"
-            android:text=""
-            android:textColor="#FF0000"
-            android:textSize="25dp"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="301dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_gravity="center_vertical"
-        android:textColor="#000000"
-        android:textSize="10dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="   와이파이 이용"
-            android:textColor="#000000"
-            android:textSize="25dp" />
-
-        <TextView
-            android:layout_width="302dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/wifi_status"
-            android:text=""
-            android:textColor="#FF0000"
-            android:textSize="25dp" />
 
     </LinearLayout>
 

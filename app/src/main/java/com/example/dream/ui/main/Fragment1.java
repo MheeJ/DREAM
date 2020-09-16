@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +25,10 @@ import androidx.fragment.app.Fragment;
 import com.example.dream.Background.GPSBackgroundService;
 import com.example.dream.Background.Status;
 import com.example.dream.R;
+import com.skt.Tmap.TMapView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -38,18 +42,31 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
     }
 
     TextView Data_Status;
-    TextView Wifi_Status, N_Address;
+    TextView Wifi_Status, Address;
     Button NewBtn_State;
     ImageView MyAddress;
     MyReceiver myReceiver;
     private String MyAddress_Longitude, MyAddress_Latitude, ServiceData_LongitudeList, ServiceData_LatitudeList;
     List<String> MyLocation_LongitudeList;
     List<String>  MyLocation_LatitudeList;
-    private double latitude;
-    private double longitude;
     private String mLongtitudeX = "&mapX=", mLatitudeY = "&mapY=", mPositionTail = "&radius=20000&listYN=Y&arrange=A";
     private String mPosition =  mLongtitudeX + mLatitudeY + mPositionTail;
     private  String lo = "", la = "";
+
+    private double latitude;
+    private double longitude;
+    private ListView listView;
+    public TextView n_address;
+    private TextView Address_info;
+    public double latitudeX; //검색위도
+    public double longitudeY;//검색경도
+    public String name;//검색이름
+    public String address;//현위치
+    private ArrayList<String> mArrayMarkerID;
+    private static int mMarkerID;
+    public TMapView tmapview;
+    private String location;
+
 
 
 
@@ -63,11 +80,31 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
         NewBtn_State.setOnClickListener(this);
         MyAddress = (ImageView)view.findViewById(R.id.my_address);
         MyAddress.setOnClickListener(this);
-        N_Address = (TextView) view.findViewById(R.id.n_address);
+        Address = (TextView) view.findViewById(R.id.address);
 
         prepareBackgroundService();
         //Toast.makeText(getContext(),"위치 찾는 중",Toast.LENGTH_LONG).show();
         getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));
+
+        mArrayMarkerID = new ArrayList<>();
+        mMarkerID = 0;
+        LinearLayout linearLayout = (LinearLayout)view.findViewById(R.id.map_view);
+        n_address = (TextView)view.findViewById(R.id.n_address);
+        Address_info = (TextView)view.findViewById(R.id.address_info);
+        tmapview = new TMapView(getActivity());
+        tmapview.setSKTMapApiKey("f14d574a-63eb-409b-8a59-8f895318bcdb");
+        tmapview.setZoomLevel(15);
+        tmapview.setMapType(TMapView.MAPTYPE_STANDARD);
+        tmapview.setLanguage(TMapView.LANGUAGE_KOREAN);
+        tmapview.setTrackingMode(true);
+        tmapview.setSightVisible(true);
+        linearLayout.addView(tmapview);
+
+        //getCurrentPosition();
+
+
+
+       // makegeocoder();
 
         return view;
 
@@ -86,6 +123,8 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
                 if(status == Status.TYPE_MOBILE){
                     setTextView1("연결됨");
                     getPosition();
+                    tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
+                    tmapview.setLocationPoint(longitude, latitude);
                     if(status == Status.TYPE_WIFI){
                         setTextView2("연결됨");
                     }
@@ -96,6 +135,8 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
                 else if(status == Status.TYPE_WIFI){
                     setTextView2("연결됨");
                     getPosition();
+                    tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
+                    tmapview.setLocationPoint(longitude, latitude);
                     if(status == Status.TYPE_MOBILE){
                         setTextView1("연결됨");
                     }
@@ -114,6 +155,8 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
                 Toast.makeText(getContext(),"위치 찾는 중",Toast.LENGTH_LONG).show();
                 getActivity().startService(new Intent(getActivity(), GPSBackgroundService.class));*/
                 getPosition();
+                tmapview.setCenterPoint(longitude, latitude); //->현재위치 = centerpoint
+                tmapview.setLocationPoint(longitude, latitude);
                 //아래 네개 문장은 꼭 필요
 
                 // 일단은 바로 멈추게 함
@@ -194,14 +237,14 @@ public class Fragment1 extends Fragment  implements View.OnClickListener {
 
             if (list != null) {
                 if (list.size()==0) {
-                    N_Address.setText("해당되는 주소 정보는 없습니다");
+                    Address.setText("해당되는 주소 정보는 없습니다");
                 } else {
-                    N_Address.setText(list.get(0).toString());
+                    Address.setText(list.get(0).toString());
                     String cut[] = list.get(0).toString().split(" ");
                     for(int i=0; i<cut.length; i++){
                         System.out.println("cut["+i+"] : " + cut[i]);
                     }
-                    N_Address.setText(cut[1] + " " + cut[2] + " " + cut[3] );
+                    Address.setText(cut[1] + " " + cut[2] + " " + cut[3] );
                 }
             }
         }

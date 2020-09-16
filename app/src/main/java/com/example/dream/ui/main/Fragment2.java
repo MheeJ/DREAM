@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +44,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     private double AA;
     private double DistanceA;
     private Context context;
+    ImageView Drone_Picture;
 
     Button AddDrone_Btn, DeleteDrone_Btn;
     ListView Drone_list;
@@ -58,12 +61,12 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_multiple_choice, items) ;
         Drone_list = (ListView)view.findViewById(R.id.droneList);
         Drone_list.setAdapter(adapter);
+        Drone_list.setOnItemClickListener(listener);
         AddDrone_Btn = (Button)view.findViewById(R.id.adddrone_btn);
         AddDrone_Btn.setOnClickListener(this);
-
         DeleteDrone_Btn = (Button)view.findViewById(R.id.deldrone_btn);
         DeleteDrone_Btn.setOnClickListener(this);
-
+        Drone_Picture = (ImageView)view.findViewById(R.id.drone_picture);
 
         context = container.getContext();
 
@@ -71,6 +74,19 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         return view;
     }
 
+    AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            int list_count, list_check;
+            list_count = adapter.getCount();
+            if(list_count>0){
+                list_check = Drone_list.getCheckedItemPosition();
+                if(list_check > -1 && list_check < list_count){
+                    Drone_Picture.setImageResource(R.drawable.dron_pic4);
+                }
+            }
+        }
+    };
 
 
     @Override
@@ -143,7 +159,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
     //서비스에서 가져온 데이터 UI에 표시
     public void set_UI(){
         setToast(DataFromService+"는   "+ DistanceA +"m" +"   기기 등록이 완료되었습니다.");
-        items.add(DataFromService);
+        items.add(DataFromService+"    "+DistanceA+"m");
         adapter.notifyDataSetChanged();
         //setTextView(DataFromService);
     }
